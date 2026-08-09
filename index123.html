@@ -1,0 +1,462 @@
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#0b1324">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="حسابیار پرو">
+<title>حسابیار پرو</title>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzBmNzY2ZSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0YjhhNiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyMCIgZmlsbD0idXJsKCNnKSIvPgo8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTM1IDE1MGgyNDJ2NDhIMTM1em0wIDgyaDE2MHY0OEgxMzV6bTAgODJoMjQydjQ4SDEzNXoiLz4KPGNpcmNsZSBjeD0iMzUzIiBjeT0iMjU1IiByPSI0MyIgZmlsbD0iI2ZkZTY4YSIvPgo8L3N2Zz4=">
+  <style>
+  :root{
+    --bg:#f4f7fb;--card:#fff;--text:#111827;--muted:#64748b;--line:#e5e7eb;
+    --primary:#0f766e;--primary2:#14b8a6;--danger:#b91c1c;--good:#047857;
+    --warning:#b45309;--shadow:0 12px 32px rgba(15,23,42,.08);
+  }
+  body.dark{--bg:#0b1324;--card:#111c31;--text:#f8fafc;--muted:#94a3b8;--line:#26334b;--shadow:none}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Tahoma",sans-serif;background:var(--bg);color:var(--text)}
+  body{padding-bottom:94px}
+  button,input,select,textarea{font:inherit}
+  button{cursor:pointer}
+  .hidden{display:none!important}
+  .app-header{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top);background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+  .header-inner{max-width:820px;margin:auto;padding:11px 15px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px}.brand-icon{width:43px;height:43px;border-radius:14px}.brand h1{font-size:18px;margin:0;font-weight:900}.brand p{font-size:11px;margin:3px 0 0;color:var(--muted)}
+  .header-actions{display:flex;gap:7px}.icon-btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:13px;padding:9px 11px}
+  main{max-width:820px;margin:auto;padding:15px}.view{display:none}.view.active{display:block}
+  .hero-card{background:linear-gradient(135deg,#0f766e,#0b5662);color:#fff;padding:20px;border-radius:24px;box-shadow:0 18px 40px rgba(15,118,110,.24);display:flex;align-items:center;justify-content:space-between;gap:15px}.hero-card span{font-size:13px;opacity:.86}.hero-card strong{display:block;font-size:29px;margin-top:8px;direction:ltr;text-align:right}.hero-card small{display:block;font-size:11px;opacity:.76;margin-top:6px}.ghost-btn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;border-radius:13px;padding:9px 11px}
+  .metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:12px}.metric-card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:14px;box-shadow:var(--shadow);min-height:96px}.metric-card span{font-size:12px;color:var(--muted)}.metric-card strong{display:block;margin-top:10px;font-size:19px;direction:ltr;text-align:right}.metric-card.income strong{color:var(--good)}.metric-card.expense strong{color:var(--danger)}
+  .section-head,.page-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 2px 10px}.section-head h2,.page-title h2{font-size:16px;margin:0}.page-title p{font-size:12px;color:var(--muted);margin:5px 0 0}.text-btn{border:0;background:transparent;color:var(--primary);font-size:12px;font-weight:800}.primary-small,.secondary-small{border:0;border-radius:13px;padding:10px 13px;font-weight:900}.primary-small{background:var(--primary);color:#fff}.secondary-small{background:var(--card);color:var(--text);border:1px solid var(--line)}
+  .panel,.filter-panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow)}
+  .stack-list{display:flex;flex-direction:column;gap:9px}.item-row{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:13px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:var(--shadow)}.item-main{min-width:0}.item-title{font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.item-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.7}.amount{font-weight:900;white-space:nowrap;direction:ltr}.amount.good{color:var(--good)}.amount.bad{color:var(--danger)}.row-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:7px}.mini{border:0;border-radius:10px;background:color-mix(in srgb,var(--bg) 90%,var(--card));color:var(--text);padding:6px 8px;font-size:10px}.mini.danger{color:var(--danger)}
+  .empty{background:var(--card);border:1px dashed var(--line);border-radius:17px;text-align:center;color:var(--muted);padding:24px;font-size:13px}
+  .filter-panel input,.filter-panel select,.form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:13px;padding:12px;outline:none}.filter-panel input:focus,.filter-panel select:focus,.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--primary2);box-shadow:0 0 0 3px rgba(20,184,166,.12)}
+  .filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+  .summary-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:11px 0}.summary-strip>div{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:11px;text-align:center}.summary-strip span{display:block;font-size:10px;color:var(--muted)}.summary-strip strong{display:block;font-size:13px;margin-top:6px;direction:ltr}
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.account-card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:14px;box-shadow:var(--shadow)}.account-card h3{font-size:14px;margin:0}.account-card p{font-size:11px;color:var(--muted);margin:5px 0}.account-card strong{display:block;font-size:18px;margin-top:16px;direction:ltr;text-align:right}
+  .progress{height:9px;background:color-mix(in srgb,var(--line) 75%,transparent);border-radius:99px;overflow:hidden;margin-top:9px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:99px}
+  .chart-wrap{height:220px;position:relative}.bars{height:190px;display:flex;align-items:flex-end;gap:7px;border-bottom:1px solid var(--line);padding:8px 2px 0}.bar-col{flex:1;text-align:center;min-width:0}.bar-pair{height:150px;display:flex;align-items:flex-end;justify-content:center;gap:3px}.bar{width:32%;min-height:2px;border-radius:5px 5px 2px 2px}.bar.in{background:#10b981}.bar.out{background:#ef4444}.bar-label{font-size:9px;color:var(--muted);margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chart-legend{display:flex;gap:14px;justify-content:center;font-size:11px;color:var(--muted);margin-top:10px}.legend-dot{display:inline-block;width:8px;height:8px;border-radius:99px;margin-left:5px}.income-dot{background:#10b981}.expense-dot{background:#ef4444}
+  .report-table{margin-top:12px;overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--card)}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th{color:var(--muted);font-weight:800}
+  .segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:color-mix(in srgb,var(--line) 70%,transparent);padding:5px;border-radius:15px}.segmented button{border:0;background:transparent;color:var(--muted);padding:10px;border-radius:11px}.segmented button.active{background:var(--card);color:var(--primary);font-weight:900}
+  .plan-panel{display:none}.plan-panel.active{display:block}
+  .menu-list{display:flex;flex-direction:column;gap:9px}.menu-list button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:17px;padding:14px;text-align:right;box-shadow:var(--shadow)}.menu-list span{display:block;font-weight:900}.menu-list small{display:block;color:var(--muted);margin-top:5px}
+  nav{position:fixed;bottom:0;left:0;right:0;z-index:40;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}.tabs{max-width:820px;margin:auto;display:grid;grid-template-columns:repeat(6,1fr)}.tab{border:0;background:transparent;color:var(--muted);padding:8px 2px 7px;font-size:9px}.tab b{display:block;font-size:17px;margin-bottom:3px}.tab.active{color:var(--primary);font-weight:900}
+  .fab{position:fixed;left:16px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:45;border:0;border-radius:18px;background:var(--primary);color:#fff;padding:14px 16px;font-weight:900;box-shadow:0 14px 30px rgba(15,118,110,.35)}
+  dialog{border:0;border-radius:24px;width:min(94vw,570px);padding:0;background:var(--card);color:var(--text);box-shadow:0 24px 80px rgba(15,23,42,.35)}dialog::backdrop{background:rgba(2,6,23,.55);backdrop-filter:blur(5px)}.dialog-head{padding:15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.dialog-body{padding:15px;max-height:75vh;overflow:auto}.close-btn{border:0;border-radius:11px;background:color-mix(in srgb,var(--line) 70%,transparent);color:var(--text);padding:7px 10px}.form-field{margin-bottom:11px}.form-field label{display:block;font-size:11px;color:var(--muted);margin:0 3px 6px}.primary-btn{width:100%;border:0;border-radius:14px;background:var(--primary);color:#fff;padding:13px;font-weight:900}.danger-btn{width:100%;border:0;border-radius:14px;background:#fee2e2;color:var(--danger);padding:13px;font-weight:900;margin-top:8px}.form-error{color:var(--danger);font-size:11px;margin-top:8px}
+  .lock-screen{position:fixed;inset:0;z-index:100;background:linear-gradient(135deg,#0b1324,#0f766e);display:grid;place-items:center;padding:20px}.lock-card{width:min(92vw,420px);background:#fff;color:#111827;border-radius:26px;padding:24px;text-align:center}.lock-logo{width:76px;height:76px;border-radius:22px}.pin-input{width:100%;text-align:center;letter-spacing:10px;font-size:26px;border:1px solid #d1d5db;border-radius:14px;padding:12px;margin:12px 0}
+  .contact-detail-head{background:linear-gradient(135deg,#172554,#0f766e);color:#fff;border-radius:20px;padding:17px}.contact-detail-head strong{font-size:24px;display:block;margin-top:10px;direction:ltr;text-align:right}
+  .pill{display:inline-block;padding:5px 8px;border-radius:99px;font-size:10px;background:color-mix(in srgb,var(--primary) 13%,transparent);color:var(--primary)}
+  @media(max-width:390px){main{padding:12px}.metric-card strong{font-size:17px}.tabs .tab{font-size:8px}.filter-grid{grid-template-columns:1fr}.hero-card strong{font-size:25px}}
+  @media print{header,nav,.fab,.page-title button,.filter-panel,.row-actions{display:none!important}body{padding:0;background:white;color:black}.view{display:none!important}#view-reports{display:block!important}.panel,.metric-card,.report-table{box-shadow:none;border-color:#ccc}}
+  </style>
+</head>
+<body>
+<div id="lockScreen" class="lock-screen hidden">
+  <div class="lock-card">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzBmNzY2ZSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0YjhhNiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyMCIgZmlsbD0idXJsKCNnKSIvPgo8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTM1IDE1MGgyNDJ2NDhIMTM1em0wIDgyaDE2MHY0OEgxMzV6bTAgODJoMjQydjQ4SDEzNXoiLz4KPGNpcmNsZSBjeD0iMzUzIiBjeT0iMjU1IiByPSI0MyIgZmlsbD0iI2ZkZTY4YSIvPgo8L3N2Zz4=" class="lock-logo" alt="">
+    <h2>حسابیار پرو</h2>
+    <p>رمز ورود را وارد کنید</p>
+    <input id="pinInput" class="pin-input" inputmode="numeric" maxlength="6" placeholder="••••">
+    <button class="primary-btn" id="unlockBtn">ورود</button>
+    <div id="pinError" class="form-error"></div>
+  </div>
+</div>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzBmNzY2ZSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0YjhhNiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyMCIgZmlsbD0idXJsKCNnKSIvPgo8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTM1IDE1MGgyNDJ2NDhIMTM1em0wIDgyaDE2MHY0OEgxMzV6bTAgODJoMjQydjQ4SDEzNXoiLz4KPGNpcmNsZSBjeD0iMzUzIiBjeT0iMjU1IiByPSI0MyIgZmlsbD0iI2ZkZTY4YSIvPgo8L3N2Zz4=" class="brand-icon" alt="">
+      <div><h1>حسابیار پرو</h1><p id="todayLabel"></p></div>
+    </div>
+    <div class="header-actions"><button class="icon-btn" id="themeBtn">◐</button><button class="icon-btn" id="settingsBtn">⚙</button></div>
+  </div>
+</header>
+
+<main>
+<section id="view-dashboard" class="view active">
+  <div class="hero-card">
+    <div><span>ارزش خالص دارایی</span><strong id="netWorthValue">۰</strong><small>مانده حساب‌ها + طلب‌ها − بدهی‌ها</small></div>
+    <button class="ghost-btn" id="toggleAmountsBtn">نمایش/مخفی</button>
+  </div>
+  <div class="metric-grid">
+    <article class="metric-card income"><span>درآمد این ماه</span><strong id="monthIncome"></strong></article>
+    <article class="metric-card expense"><span>هزینه این ماه</span><strong id="monthExpense"></strong></article>
+    <article class="metric-card"><span>طلب از دیگران</span><strong id="totalReceivable"></strong></article>
+    <article class="metric-card"><span>بدهی به دیگران</span><strong id="totalPayable"></strong></article>
+  </div>
+  <div class="section-head"><h2>روند شش‌ماهه</h2><button class="text-btn" data-go="reports">گزارش کامل</button></div>
+  <div class="panel"><div id="monthlyChart" class="chart-wrap"></div><div class="chart-legend"><span><i class="legend-dot income-dot"></i>درآمد</span><span><i class="legend-dot expense-dot"></i>هزینه</span></div></div>
+  <div class="section-head"><h2>بودجه‌های این ماه</h2><button class="text-btn" data-go="plans">مدیریت</button></div><div id="dashboardBudgets" class="stack-list"></div>
+  <div class="section-head"><h2>سررسیدهای نزدیک</h2><button class="text-btn" data-go="plans">مشاهده همه</button></div><div id="dueItems" class="stack-list"></div>
+  <div class="section-head"><h2>آخرین تراکنش‌ها</h2><button class="text-btn" data-go="transactions">همه</button></div><div id="recentTransactions" class="stack-list"></div>
+</section>
+
+<section id="view-transactions" class="view">
+  <div class="page-title"><div><h2>تراکنش‌ها</h2><p>دریافت، پرداخت، انتقال و عملیات طرف‌حساب</p></div><button class="primary-small" id="addTransactionTop">+ ثبت</button></div>
+  <div class="filter-panel">
+    <input id="transactionSearch" type="search" placeholder="جست‌وجوی عنوان، طرف‌حساب یا یادداشت">
+    <div class="filter-grid">
+      <select id="transactionTypeFilter"><option value="all">همه انواع</option><option value="income">درآمد</option><option value="expense">هزینه</option><option value="transfer">انتقال</option><option value="receivable">ثبت طلب</option><option value="payable">ثبت بدهی</option><option value="receive">دریافت از طرف‌حساب</option><option value="pay">پرداخت به طرف‌حساب</option></select>
+      <select id="transactionAccountFilter"></select><input id="transactionFrom" type="date"><input id="transactionTo" type="date">
+    </div>
+  </div>
+  <div class="summary-strip"><div><span>تعداد</span><strong id="filteredCount"></strong></div><div><span>ورودی</span><strong id="filteredIn"></strong></div><div><span>خروجی</span><strong id="filteredOut"></strong></div></div>
+  <div id="transactionList" class="stack-list"></div>
+</section>
+
+<section id="view-accounts" class="view">
+  <div class="page-title"><div><h2>حساب‌ها</h2><p>بانک، کارت، نقدی، پس‌انداز و سرمایه‌گذاری</p></div><button class="primary-small" id="addAccountBtn">+ حساب</button></div>
+  <div id="accountTotals" class="summary-strip"></div><div id="accountList" class="card-grid"></div>
+</section>
+
+<section id="view-contacts" class="view">
+  <div class="page-title"><div><h2>طرف‌حساب‌ها</h2><p>دفتر تفصیلی و مانده هر شخص</p></div><button class="primary-small" id="addContactBtn">+ طرف‌حساب</button></div>
+  <div class="filter-panel"><input id="contactSearch" type="search" placeholder="جست‌وجوی نام یا تلفن"><select id="contactBalanceFilter" style="margin-top:9px"><option value="all">همه مانده‌ها</option><option value="receivable">بدهکار به من</option><option value="payable">بستانکار از من</option><option value="settled">تسویه</option></select></div>
+  <div id="contactSummary" class="summary-strip"></div><div id="contactList" class="stack-list"></div>
+</section>
+
+<section id="view-reports" class="view">
+  <div class="page-title"><div><h2>گزارش‌ها</h2><p>تحلیل نموداری و ریز اطلاعات</p></div><button class="secondary-small" id="printReportBtn">چاپ/PDF</button></div>
+  <div class="filter-panel">
+    <div class="filter-grid"><input id="reportFrom" type="date"><input id="reportTo" type="date"><select id="reportDimension"><option value="category">بر اساس دسته</option><option value="account">بر اساس حساب</option><option value="contact">بر اساس طرف‌حساب</option><option value="month">بر اساس ماه</option></select><select id="reportKind"><option value="expense">هزینه‌ها</option><option value="income">درآمدها</option><option value="all">ورودی و خروجی</option></select></div>
+    <button class="primary-btn" id="runReportBtn" style="margin-top:10px">اجرای گزارش</button>
+  </div>
+  <div class="metric-grid"><article class="metric-card"><span>جمع ورودی</span><strong id="reportIncome"></strong></article><article class="metric-card"><span>جمع خروجی</span><strong id="reportExpense"></strong></article><article class="metric-card"><span>خالص جریان</span><strong id="reportNet"></strong></article><article class="metric-card"><span>تعداد</span><strong id="reportCount"></strong></article></div>
+  <div class="panel" style="margin-top:11px"><div id="reportChart" class="chart-wrap"></div></div><div id="reportTable" class="report-table"></div>
+</section>
+
+<section id="view-plans" class="view">
+  <div class="page-title"><div><h2>برنامه‌ریزی مالی</h2><p>بودجه، اقساط و تراکنش‌های دوره‌ای</p></div></div>
+  <div class="segmented" id="plansTabs"><button class="active" data-plan-tab="budgets">بودجه</button><button data-plan-tab="installments">اقساط</button><button data-plan-tab="recurring">دوره‌ای</button></div>
+  <div id="plan-budgets" class="plan-panel active"><div class="section-head"><h2>بودجه‌های ماهانه</h2><button class="primary-small" id="addBudgetBtn">+ بودجه</button></div><div id="budgetList" class="stack-list"></div></div>
+  <div id="plan-installments" class="plan-panel"><div class="section-head"><h2>وام و اقساط</h2><button class="primary-small" id="addInstallmentBtn">+ قسط</button></div><div id="installmentList" class="stack-list"></div></div>
+  <div id="plan-recurring" class="plan-panel"><div class="section-head"><h2>تراکنش‌های دوره‌ای</h2><button class="primary-small" id="addRecurringBtn">+ دوره‌ای</button></div><div id="recurringList" class="stack-list"></div></div>
+</section>
+
+<section id="view-more" class="view">
+  <div class="page-title"><div><h2>مدیریت برنامه</h2><p>دسته‌بندی، پشتیبان، امنیت و تنظیمات</p></div></div>
+  <div class="menu-list">
+    <button id="categoryManagerBtn"><span>دسته‌بندی‌ها</span><small>افزودن و حذف دسته‌های درآمد و هزینه</small></button>
+    <button id="backupBtn"><span>دریافت پشتیبان</span><small>ذخیره همه اطلاعات در فایل JSON</small></button>
+    <button id="restoreBtn"><span>بازیابی پشتیبان</span><small>برگرداندن اطلاعات از فایل قبلی</small></button>
+    <button id="csvBtn"><span>خروجی Excel/CSV</span><small>خروجی کامل تراکنش‌ها</small></button>
+    <button id="pinBtn"><span>قفل برنامه</span><small>تنظیم یا حذف رمز ورود</small></button>
+    <button id="currencyBtn"><span>واحد پول</span><small id="currencyHint"></small></button>
+    <button id="sampleBtn"><span>داده آزمایشی</span><small>افزودن نمونه برای دیدن همه امکانات</small></button>
+    <button id="clearBtn"><span style="color:var(--danger)">پاک‌کردن همه اطلاعات</span><small>این کار قابل بازگشت نیست</small></button>
+  </div>
+  <input id="restoreFile" type="file" accept=".json,application/json" hidden>
+</section>
+</main>
+
+<button class="fab" id="mainAddBtn">＋ ثبت تراکنش</button>
+<nav><div class="tabs">
+  <button class="tab active" data-view="dashboard"><b>⌂</b>خانه</button>
+  <button class="tab" data-view="transactions"><b>↕</b>تراکنش</button>
+  <button class="tab" data-view="accounts"><b>▣</b>حساب‌ها</button>
+  <button class="tab" data-view="contacts"><b>♙</b>طرف‌حساب</button>
+  <button class="tab" data-view="reports"><b>▥</b>گزارش</button>
+  <button class="tab" data-view="plans"><b>◷</b>برنامه</button>
+</div></nav>
+
+<dialog id="transactionDialog"><div class="dialog-head"><strong id="transactionDialogTitle">ثبت تراکنش</strong><button class="close-btn" data-close="transactionDialog">✕</button></div><div class="dialog-body">
+  <input id="editTransactionId" hidden>
+  <div class="form-field"><label>نوع عملیات</label><select id="txType"><option value="expense">هزینه</option><option value="income">درآمد</option><option value="transfer">انتقال بین حساب‌ها</option><option value="receivable">ثبت طلب از طرف‌حساب</option><option value="payable">ثبت بدهی به طرف‌حساب</option><option value="receive">دریافت از طرف‌حساب</option><option value="pay">پرداخت به طرف‌حساب</option></select></div>
+  <div class="form-field"><label>مبلغ</label><input id="txAmount" inputmode="numeric"></div>
+  <div class="form-field"><label>عنوان</label><input id="txTitle" placeholder="مثلاً خرید روزانه"></div>
+  <div class="form-field"><label>حساب</label><select id="txAccount"></select></div>
+  <div class="form-field hidden" id="toAccountWrap"><label>حساب مقصد</label><select id="txToAccount"></select></div>
+  <div class="form-field" id="categoryWrap"><label>دسته‌بندی</label><select id="txCategory"></select></div>
+  <div class="form-field hidden" id="contactWrap"><label>طرف‌حساب</label><select id="txContact"></select></div>
+  <div class="form-field"><label>تاریخ</label><input id="txDate" type="date"></div>
+  <div class="form-field"><label>یادداشت</label><textarea id="txNote" rows="2"></textarea></div>
+  <div id="txError" class="form-error"></div><button class="primary-btn" id="saveTransactionBtn">ذخیره تراکنش</button>
+</div></dialog>
+
+<dialog id="accountDialog"><div class="dialog-head"><strong>حساب</strong><button class="close-btn" data-close="accountDialog">✕</button></div><div class="dialog-body">
+  <input id="editAccountId" hidden><div class="form-field"><label>نام حساب</label><input id="accountName"></div><div class="form-field"><label>نوع حساب</label><select id="accountType"><option>کارت بانکی</option><option>حساب بانکی</option><option>نقدی</option><option>پس‌انداز</option><option>سرمایه‌گذاری</option><option>کیف پول دیجیتال</option></select></div><div class="form-field"><label>موجودی اولیه</label><input id="accountOpening" inputmode="numeric"></div><div class="form-field"><label>توضیح</label><input id="accountNote"></div><button class="primary-btn" id="saveAccountBtn">ذخیره</button>
+</div></dialog>
+
+<dialog id="contactDialog"><div class="dialog-head"><strong>طرف‌حساب</strong><button class="close-btn" data-close="contactDialog">✕</button></div><div class="dialog-body">
+  <input id="editContactId" hidden><div class="form-field"><label>نام و نام خانوادگی</label><input id="contactName"></div><div class="form-field"><label>شماره تماس</label><input id="contactPhone" inputmode="tel"></div><div class="form-field"><label>گروه</label><select id="contactGroup"><option>شخصی</option><option>خانواده</option><option>دوست</option><option>مشتری</option><option>فروشنده</option><option>همکار</option><option>سایر</option></select></div><div class="form-field"><label>توضیح</label><textarea id="contactNote"></textarea></div><button class="primary-btn" id="saveContactBtn">ذخیره</button>
+</div></dialog>
+
+<dialog id="contactDetailDialog"><div class="dialog-head"><strong>دفتر طرف‌حساب</strong><button class="close-btn" data-close="contactDetailDialog">✕</button></div><div class="dialog-body" id="contactDetailBody"></div></dialog>
+
+<dialog id="budgetDialog"><div class="dialog-head"><strong>بودجه ماهانه</strong><button class="close-btn" data-close="budgetDialog">✕</button></div><div class="dialog-body">
+  <input id="editBudgetId" hidden><div class="form-field"><label>دسته هزینه</label><select id="budgetCategory"></select></div><div class="form-field"><label>سقف بودجه</label><input id="budgetAmount" inputmode="numeric"></div><button class="primary-btn" id="saveBudgetBtn">ذخیره</button>
+</div></dialog>
+
+<dialog id="installmentDialog"><div class="dialog-head"><strong>وام و قسط</strong><button class="close-btn" data-close="installmentDialog">✕</button></div><div class="dialog-body">
+  <input id="editInstallmentId" hidden><div class="form-field"><label>عنوان</label><input id="installmentTitle"></div><div class="form-field"><label>مبلغ هر قسط</label><input id="installmentAmount" inputmode="numeric"></div><div class="form-field"><label>تعداد کل اقساط</label><input id="installmentCount" inputmode="numeric"></div><div class="form-field"><label>تعداد پرداخت‌شده</label><input id="installmentPaid" inputmode="numeric"></div><div class="form-field"><label>سررسید بعدی</label><input id="installmentDue" type="date"></div><div class="form-field"><label>حساب پرداخت</label><select id="installmentAccount"></select></div><button class="primary-btn" id="saveInstallmentBtn">ذخیره</button>
+</div></dialog>
+
+<dialog id="recurringDialog"><div class="dialog-head"><strong>تراکنش دوره‌ای</strong><button class="close-btn" data-close="recurringDialog">✕</button></div><div class="dialog-body">
+  <input id="editRecurringId" hidden><div class="form-field"><label>عنوان</label><input id="recurringTitle"></div><div class="form-field"><label>نوع</label><select id="recurringType"><option value="expense">هزینه</option><option value="income">درآمد</option></select></div><div class="form-field"><label>مبلغ</label><input id="recurringAmount" inputmode="numeric"></div><div class="form-field"><label>حساب</label><select id="recurringAccount"></select></div><div class="form-field"><label>دسته</label><select id="recurringCategory"></select></div><div class="form-field"><label>تکرار</label><select id="recurringFrequency"><option value="monthly">ماهانه</option><option value="weekly">هفتگی</option><option value="yearly">سالانه</option></select></div><div class="form-field"><label>اجرای بعدی</label><input id="recurringNext" type="date"></div><button class="primary-btn" id="saveRecurringBtn">ذخیره</button>
+</div></dialog>
+
+<dialog id="categoriesDialog"><div class="dialog-head"><strong>مدیریت دسته‌بندی‌ها</strong><button class="close-btn" data-close="categoriesDialog">✕</button></div><div class="dialog-body">
+  <div class="form-field"><label>نوع دسته</label><select id="newCategoryType"><option value="expense">هزینه</option><option value="income">درآمد</option></select></div><div class="form-field"><label>نام دسته جدید</label><input id="newCategoryName"></div><button class="primary-btn" id="addCategoryBtn">افزودن</button><div id="categoriesList" class="stack-list" style="margin-top:12px"></div>
+</div></dialog>
+
+<dialog id="settingsDialog"><div class="dialog-head"><strong>تنظیمات سریع</strong><button class="close-btn" data-close="settingsDialog">✕</button></div><div class="dialog-body">
+  <button class="primary-btn" data-go-from-dialog="more">رفتن به مدیریت برنامه</button>
+  <p class="item-sub" style="margin-top:14px">اطلاعات فقط روی همین دستگاه ذخیره می‌شود. مرتب فایل پشتیبان تهیه کنید.</p>
+</div></dialog>
+
+<script>
+const KEY="hesabyar_pro_v1";
+const $=id=>document.getElementById(id);
+const todayISO=()=>new Date().toISOString().slice(0,10);
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const n=v=>Number(String(v??0).replace(/[^\d.-]/g,""))||0;
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const monthKey=d=>new Date(d||Date.now()).toISOString().slice(0,7);
+const fresh=()=>({
+  settings:{currency:"تومان",dark:false,hideAmounts:false,pin:""},
+  categories:{expense:["خوراک","رفت‌وآمد","قبوض","خرید","درمان","تفریح","مسکن","آموزش","هدیه","سایر"],income:["حقوق","فروش","سود","هدیه دریافتی","اجاره","سایر"]},
+  accounts:[{id:uid(),name:"کیف پول",type:"نقدی",opening:0,note:""}],
+  contacts:[],transactions:[],budgets:[],installments:[],recurring:[]
+});
+let state;
+try{state=JSON.parse(localStorage.getItem(KEY))||fresh()}catch{state=fresh()}
+const save=()=>{localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
+const fmt=v=>state.settings.hideAmounts?"••••":new Intl.NumberFormat("fa-IR").format(Math.round(n(v)))+" "+state.settings.currency;
+const faDate=v=>v?new Date(v+"T12:00:00").toLocaleDateString("fa-IR"):"—";
+const find=(arr,id)=>arr.find(x=>x.id===id);
+const isIn=(type)=>["income","receive"].includes(type);
+const isOut=(type)=>["expense","pay"].includes(type);
+
+function accountBalance(a){
+  let b=n(a.opening);
+  state.transactions.forEach(t=>{
+    if(t.type==="income"&&t.accountId===a.id)b+=n(t.amount);
+    if(t.type==="expense"&&t.accountId===a.id)b-=n(t.amount);
+    if(t.type==="receive"&&t.accountId===a.id)b+=n(t.amount);
+    if(t.type==="pay"&&t.accountId===a.id)b-=n(t.amount);
+    if(t.type==="transfer"){if(t.accountId===a.id)b-=n(t.amount);if(t.toAccountId===a.id)b+=n(t.amount)}
+  });
+  return b;
+}
+function contactBalance(id){
+  let b=0;
+  state.transactions.filter(t=>t.contactId===id).forEach(t=>{
+    if(t.type==="receivable")b+=n(t.amount);
+    if(t.type==="receive")b-=n(t.amount);
+    if(t.type==="payable")b-=n(t.amount);
+    if(t.type==="pay")b+=n(t.amount);
+  });
+  return b;
+}
+function transactionImpact(t){
+  return {in:isIn(t.type)?n(t.amount):0,out:isOut(t.type)?n(t.amount):0};
+}
+function txTypeLabel(t){return ({income:"درآمد",expense:"هزینه",transfer:"انتقال",receivable:"ثبت طلب",payable:"ثبت بدهی",receive:"دریافت از طرف‌حساب",pay:"پرداخت به طرف‌حساب"})[t]||t}
+function txRow(t){
+  const acc=find(state.accounts,t.accountId),to=find(state.accounts,t.toAccountId),c=find(state.contacts,t.contactId);
+  let cls=isIn(t.type)?"good":isOut(t.type)?"bad":"",sign=isIn(t.type)?"+":isOut(t.type)?"−":"";
+  let sub=[txTypeLabel(t.type),t.category,c?.name,acc?.name,t.type==="transfer"&&to?.name,faDate(t.date)].filter(Boolean).join(" • ");
+  return `<div class="item-row"><div class="item-main"><div class="item-title">${esc(t.title)}</div><div class="item-sub">${esc(sub)}</div></div><div style="text-align:left"><div class="amount ${cls}">${sign} ${fmt(t.amount)}</div><div class="row-actions"><button class="mini" onclick="editTransaction('${t.id}')">ویرایش</button><button class="mini danger" onclick="deleteTransaction('${t.id}')">حذف</button></div></div></div>`
+}
+function empty(msg){return `<div class="empty">${msg}</div>`}
+function go(view){
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));
+  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
+  scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>go(b.dataset.view));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+
+function renderDashboard(){
+  const mk=monthKey(),monthTx=state.transactions.filter(t=>t.date.startsWith(mk));
+  const inc=monthTx.filter(t=>t.type==="income").reduce((s,t)=>s+n(t.amount),0);
+  const exp=monthTx.filter(t=>t.type==="expense").reduce((s,t)=>s+n(t.amount),0);
+  const rec=state.contacts.reduce((s,c)=>s+Math.max(0,contactBalance(c.id)),0);
+  const pay=state.contacts.reduce((s,c)=>s+Math.max(0,-contactBalance(c.id)),0);
+  const totalAccounts=state.accounts.reduce((s,a)=>s+accountBalance(a),0);
+  $("monthIncome").textContent=fmt(inc);$("monthExpense").textContent=fmt(exp);$("totalReceivable").textContent=fmt(rec);$("totalPayable").textContent=fmt(pay);$("netWorthValue").textContent=fmt(totalAccounts+rec-pay);
+  const sorted=[...state.transactions].sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id));
+  $("recentTransactions").innerHTML=sorted.slice(0,6).map(txRow).join("")||empty("هنوز تراکنشی ثبت نشده است.");
+  renderMonthlyChart();
+  const spent={};monthTx.filter(t=>t.type==="expense").forEach(t=>spent[t.category]=(spent[t.category]||0)+n(t.amount));
+  $("dashboardBudgets").innerHTML=state.budgets.slice(0,3).map(b=>{
+    let s=spent[b.category]||0,p=Math.min(100,s/n(b.amount)*100||0);
+    return `<div class="item-row"><div class="item-main"><div class="item-title">${esc(b.category)}</div><div class="item-sub">${fmt(s)} از ${fmt(b.amount)}</div><div class="progress"><i style="width:${p}%"></i></div></div><span class="pill">${Math.round(p)}٪</span></div>`
+  }).join("")||empty("بودجه‌ای تعریف نشده است.");
+  let due=[];
+  state.installments.forEach(i=>due.push({title:i.title,date:i.due,amount:i.amount,kind:"قسط"}));
+  state.recurring.forEach(r=>due.push({title:r.title,date:r.next,amount:r.amount,kind:"دوره‌ای"}));
+  due=due.filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5);
+  $("dueItems").innerHTML=due.map(x=>`<div class="item-row"><div><div class="item-title">${esc(x.title)}</div><div class="item-sub">${x.kind} • ${faDate(x.date)}</div></div><strong class="amount">${fmt(x.amount)}</strong></div>`).join("")||empty("سررسید نزدیکی وجود ندارد.");
+}
+function renderMonthlyChart(){
+  let months=[];const now=new Date();
+  for(let i=5;i>=0;i--){let d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push(d.toISOString().slice(0,7))}
+  const rows=months.map(m=>({m,inc:state.transactions.filter(t=>t.type==="income"&&t.date.startsWith(m)).reduce((s,t)=>s+n(t.amount),0),out:state.transactions.filter(t=>t.type==="expense"&&t.date.startsWith(m)).reduce((s,t)=>s+n(t.amount),0)}));
+  const mx=Math.max(1,...rows.flatMap(r=>[r.inc,r.out]));
+  $("monthlyChart").innerHTML=`<div class="bars">${rows.map(r=>`<div class="bar-col"><div class="bar-pair"><i class="bar in" style="height:${Math.max(2,r.inc/mx*145)}px"></i><i class="bar out" style="height:${Math.max(2,r.out/mx*145)}px"></i></div><div class="bar-label">${new Date(r.m+"-01").toLocaleDateString("fa-IR",{month:"short"})}</div></div>`).join("")}</div>`;
+}
+function filteredTransactions(){
+  let list=[...state.transactions];
+  const q=$("transactionSearch").value.trim(),type=$("transactionTypeFilter").value,acc=$("transactionAccountFilter").value,from=$("transactionFrom").value,to=$("transactionTo").value;
+  if(q)list=list.filter(t=>[t.title,t.note,t.category,find(state.contacts,t.contactId)?.name].join(" ").includes(q));
+  if(type!=="all")list=list.filter(t=>t.type===type);
+  if(acc!=="all")list=list.filter(t=>t.accountId===acc||t.toAccountId===acc);
+  if(from)list=list.filter(t=>t.date>=from);if(to)list=list.filter(t=>t.date<=to);
+  return list.sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id));
+}
+function renderTransactions(){
+  const list=filteredTransactions();let ins=0,outs=0;list.forEach(t=>{const x=transactionImpact(t);ins+=x.in;outs+=x.out});
+  $("filteredCount").textContent=new Intl.NumberFormat("fa-IR").format(list.length);$("filteredIn").textContent=fmt(ins);$("filteredOut").textContent=fmt(outs);
+  $("transactionList").innerHTML=list.map(txRow).join("")||empty("تراکنشی با این فیلتر پیدا نشد.");
+}
+function renderAccounts(){
+  const total=state.accounts.reduce((s,a)=>s+accountBalance(a),0);
+  $("accountTotals").innerHTML=`<div><span>تعداد حساب</span><strong>${new Intl.NumberFormat("fa-IR").format(state.accounts.length)}</strong></div><div><span>مانده کل</span><strong>${fmt(total)}</strong></div><div><span>بیشترین مانده</span><strong>${fmt(Math.max(0,...state.accounts.map(accountBalance)))}</strong></div>`;
+  $("accountList").innerHTML=state.accounts.map(a=>`<div class="account-card"><h3>${esc(a.name)}</h3><p>${esc(a.type)}${a.note?" • "+esc(a.note):""}</p><strong>${fmt(accountBalance(a))}</strong><div class="row-actions"><button class="mini" onclick="editAccount('${a.id}')">ویرایش</button><button class="mini" onclick="showAccountLedger('${a.id}')">گردش</button><button class="mini danger" onclick="deleteAccount('${a.id}')">حذف</button></div></div>`).join("");
+}
+function renderContacts(){
+  let list=[...state.contacts],q=$("contactSearch").value.trim(),f=$("contactBalanceFilter").value;
+  if(q)list=list.filter(c=>(c.name+" "+c.phone).includes(q));
+  if(f!=="all")list=list.filter(c=>{let b=contactBalance(c.id);return f==="receivable"?b>0:f==="payable"?b<0:b===0});
+  const rec=state.contacts.reduce((s,c)=>s+Math.max(0,contactBalance(c.id)),0),pay=state.contacts.reduce((s,c)=>s+Math.max(0,-contactBalance(c.id)),0);
+  $("contactSummary").innerHTML=`<div><span>تعداد</span><strong>${new Intl.NumberFormat("fa-IR").format(state.contacts.length)}</strong></div><div><span>طلب</span><strong>${fmt(rec)}</strong></div><div><span>بدهی</span><strong>${fmt(pay)}</strong></div>`;
+  $("contactList").innerHTML=list.map(c=>{let b=contactBalance(c.id),label=b>0?"بدهکار به من":b<0?"بستانکار از من":"تسویه",cls=b>0?"good":b<0?"bad":"";return `<div class="item-row"><div class="item-main"><div class="item-title">${esc(c.name)}</div><div class="item-sub">${esc(c.group)}${c.phone?" • "+esc(c.phone):""} • ${label}</div></div><div style="text-align:left"><div class="amount ${cls}">${fmt(Math.abs(b))}</div><div class="row-actions"><button class="mini" onclick="showContactDetail('${c.id}')">دفتر</button><button class="mini" onclick="editContact('${c.id}')">ویرایش</button><button class="mini danger" onclick="deleteContact('${c.id}')">حذف</button></div></div></div>`}).join("")||empty("طرف‌حساب ثبت نشده است.");
+}
+function renderPlans(){
+  const mk=monthKey(),spent={};state.transactions.filter(t=>t.type==="expense"&&t.date.startsWith(mk)).forEach(t=>spent[t.category]=(spent[t.category]||0)+n(t.amount));
+  $("budgetList").innerHTML=state.budgets.map(b=>{let s=spent[b.category]||0,p=Math.min(100,s/n(b.amount)*100||0);return `<div class="item-row"><div class="item-main"><div class="item-title">${esc(b.category)}</div><div class="item-sub">${fmt(s)} از ${fmt(b.amount)}</div><div class="progress"><i style="width:${p}%"></i></div></div><div class="row-actions"><button class="mini" onclick="editBudget('${b.id}')">ویرایش</button><button class="mini danger" onclick="deleteBudget('${b.id}')">حذف</button></div></div>`}).join("")||empty("بودجه‌ای تعریف نشده است.");
+  $("installmentList").innerHTML=state.installments.map(i=>`<div class="item-row"><div class="item-main"><div class="item-title">${esc(i.title)}</div><div class="item-sub">${i.paid} از ${i.count} پرداخت شده • سررسید ${faDate(i.due)}</div><div class="progress"><i style="width:${Math.min(100,n(i.paid)/Math.max(1,n(i.count))*100)}%"></i></div></div><div style="text-align:left"><div class="amount">${fmt(i.amount)}</div><div class="row-actions"><button class="mini" onclick="payInstallment('${i.id}')">پرداخت قسط</button><button class="mini" onclick="editInstallment('${i.id}')">ویرایش</button><button class="mini danger" onclick="deleteInstallment('${i.id}')">حذف</button></div></div></div>`).join("")||empty("قسطی تعریف نشده است.");
+  $("recurringList").innerHTML=state.recurring.map(r=>`<div class="item-row"><div class="item-main"><div class="item-title">${esc(r.title)}</div><div class="item-sub">${r.frequency==="monthly"?"ماهانه":r.frequency==="weekly"?"هفتگی":"سالانه"} • اجرای بعدی ${faDate(r.next)}</div></div><div style="text-align:left"><div class="amount ${r.type==="income"?"good":"bad"}">${fmt(r.amount)}</div><div class="row-actions"><button class="mini" onclick="runRecurring('${r.id}')">ثبت اکنون</button><button class="mini" onclick="editRecurring('${r.id}')">ویرایش</button><button class="mini danger" onclick="deleteRecurring('${r.id}')">حذف</button></div></div></div>`).join("")||empty("تراکنش دوره‌ای تعریف نشده است.");
+}
+function renderCategories(){
+  $("categoriesList").innerHTML=["expense","income"].map(type=>`<div><h3 style="font-size:13px">${type==="expense"?"دسته‌های هزینه":"دسته‌های درآمد"}</h3>${state.categories[type].map(c=>`<div class="item-row"><span>${esc(c)}</span><button class="mini danger" onclick="removeCategory('${type}','${encodeURIComponent(c)}')">حذف</button></div>`).join("")}</div>`).join("");
+}
+function fillSelects(){
+  const accounts=`<option value="all">همه حساب‌ها</option>`+state.accounts.map(a=>`<option value="${a.id}">${esc(a.name)}</option>`).join("");
+  $("transactionAccountFilter").innerHTML=accounts;
+  const accOpts=state.accounts.map(a=>`<option value="${a.id}">${esc(a.name)}</option>`).join("");
+  ["txAccount","txToAccount","installmentAccount","recurringAccount"].forEach(id=>$(id).innerHTML=accOpts);
+  $("txContact").innerHTML=`<option value="">انتخاب کنید</option>`+state.contacts.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("");
+  $("budgetCategory").innerHTML=state.categories.expense.map(c=>`<option>${esc(c)}</option>`).join("");
+  updateTxCategories();updateRecurringCategories();
+}
+function updateTxCategories(){
+  const type=$("txType").value,arr=type==="income"?state.categories.income:state.categories.expense;
+  $("txCategory").innerHTML=arr.map(c=>`<option>${esc(c)}</option>`).join("");
+  $("toAccountWrap").classList.toggle("hidden",type!=="transfer");
+  $("contactWrap").classList.toggle("hidden",!["receivable","payable","receive","pay"].includes(type));
+  $("categoryWrap").classList.toggle("hidden",["transfer","receivable","payable","receive","pay"].includes(type));
+}
+function updateRecurringCategories(){const arr=$("recurringType").value==="income"?state.categories.income:state.categories.expense;$("recurringCategory").innerHTML=arr.map(c=>`<option>${esc(c)}</option>`).join("")}
+function renderReport(){
+  let from=$("reportFrom").value,to=$("reportTo").value,dim=$("reportDimension").value,kind=$("reportKind").value;
+  let list=state.transactions.filter(t=>(!from||t.date>=from)&&(!to||t.date<=to));
+  if(kind!=="all")list=list.filter(t=>kind==="income"?isIn(t.type):isOut(t.type));
+  let income=0,expense=0;list.forEach(t=>{const x=transactionImpact(t);income+=x.in;expense+=x.out});
+  $("reportIncome").textContent=fmt(income);$("reportExpense").textContent=fmt(expense);$("reportNet").textContent=fmt(income-expense);$("reportCount").textContent=new Intl.NumberFormat("fa-IR").format(list.length);
+  const map={};
+  list.forEach(t=>{
+    let key=dim==="category"?(t.category||txTypeLabel(t.type)):dim==="account"?(find(state.accounts,t.accountId)?.name||"بدون حساب"):dim==="contact"?(find(state.contacts,t.contactId)?.name||"بدون طرف‌حساب"):t.date.slice(0,7);
+    if(!map[key])map[key]={income:0,expense:0,count:0};
+    const x=transactionImpact(t);map[key].income+=x.in;map[key].expense+=x.out;map[key].count++;
+  });
+  const rows=Object.entries(map).map(([name,v])=>({name,...v,total:kind==="income"?v.income:kind==="expense"?v.expense:v.income+v.expense})).sort((a,b)=>b.total-a.total);
+  const mx=Math.max(1,...rows.map(r=>r.total));
+  $("reportChart").innerHTML=`<div class="bars">${rows.slice(0,10).map(r=>`<div class="bar-col"><div class="bar-pair"><i class="bar ${kind==="expense"?"out":"in"}" style="height:${Math.max(2,r.total/mx*145)}px"></i></div><div class="bar-label">${esc(r.name)}</div></div>`).join("")}</div>`;
+  $("reportTable").innerHTML=`<table><thead><tr><th>عنوان</th><th>ورودی</th><th>خروجی</th><th>تعداد</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.name)}</td><td>${fmt(r.income)}</td><td>${fmt(r.expense)}</td><td>${r.count}</td></tr>`).join("")}</tbody></table>`;
+}
+function renderAll(){document.body.classList.toggle("dark",!!state.settings.dark);$("currencyHint").textContent=state.settings.currency;renderDashboard();renderTransactions();renderAccounts();renderContacts();renderPlans();fillSelects();renderCategories();renderReport()}
+
+function openDialog(id){$(id).showModal()}
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>$(b.dataset.close).close());
+$("mainAddBtn").onclick=$("addTransactionTop").onclick=()=>openTransaction();
+function openTransaction(id=""){
+  $("transactionDialogTitle").textContent=id?"ویرایش تراکنش":"ثبت تراکنش";$("editTransactionId").value=id;$("txError").textContent="";
+  const t=find(state.transactions,id);
+  $("txType").value=t?.type||"expense";updateTxCategories();$("txAmount").value=t?.amount||"";$("txTitle").value=t?.title||"";$("txAccount").value=t?.accountId||state.accounts[0]?.id||"";$("txToAccount").value=t?.toAccountId||state.accounts[0]?.id||"";$("txCategory").value=t?.category||$("txCategory").value;$("txContact").value=t?.contactId||"";$("txDate").value=t?.date||todayISO();$("txNote").value=t?.note||"";openDialog("transactionDialog")
+}
+window.editTransaction=openTransaction;
+$("txType").onchange=updateTxCategories;
+$("saveTransactionBtn").onclick=()=>{
+  const id=$("editTransactionId").value,type=$("txType").value,amount=n($("txAmount").value),title=$("txTitle").value.trim(),accountId=$("txAccount").value,date=$("txDate").value;
+  if(amount<=0||!title||!accountId||!date){$("txError").textContent="مبلغ، عنوان، حساب و تاریخ را کامل کنید.";return}
+  if(type==="transfer"&&accountId===$("txToAccount").value){$("txError").textContent="حساب مبدأ و مقصد یکسان است.";return}
+  if(["receivable","payable","receive","pay"].includes(type)&&!$("txContact").value){$("txError").textContent="طرف‌حساب را انتخاب کنید.";return}
+  const obj={id:id||uid(),type,amount,title,accountId,toAccountId:type==="transfer"?$("txToAccount").value:"",category:["transfer","receivable","payable","receive","pay"].includes(type)?"":$("txCategory").value,contactId:["receivable","payable","receive","pay"].includes(type)?$("txContact").value:"",date,note:$("txNote").value.trim()};
+  if(id)state.transactions=state.transactions.map(x=>x.id===id?obj:x);else state.transactions.push(obj);
+  $("transactionDialog").close();save()
+};
+window.deleteTransaction=id=>{if(confirm("این تراکنش حذف شود؟")){state.transactions=state.transactions.filter(x=>x.id!==id);save()}};
+
+$("addAccountBtn").onclick=()=>openAccount();
+function openAccount(id=""){const a=find(state.accounts,id);$("editAccountId").value=id;$("accountName").value=a?.name||"";$("accountType").value=a?.type||"کارت بانکی";$("accountOpening").value=a?.opening||0;$("accountNote").value=a?.note||"";openDialog("accountDialog")}
+window.editAccount=openAccount;
+$("saveAccountBtn").onclick=()=>{const id=$("editAccountId").value,name=$("accountName").value.trim();if(!name)return alert("نام حساب را وارد کنید.");const obj={id:id||uid(),name,type:$("accountType").value,opening:n($("accountOpening").value),note:$("accountNote").value.trim()};if(id)state.accounts=state.accounts.map(x=>x.id===id?obj:x);else state.accounts.push(obj);$("accountDialog").close();save()};
+window.deleteAccount=id=>{if(state.transactions.some(t=>t.accountId===id||t.toAccountId===id))return alert("این حساب تراکنش دارد و حذف نمی‌شود.");if(state.accounts.length===1)return alert("حداقل یک حساب باید باقی بماند.");if(confirm("حساب حذف شود؟")){state.accounts=state.accounts.filter(x=>x.id!==id);save()}};
+window.showAccountLedger=id=>{go("transactions");$("transactionAccountFilter").value=id;renderTransactions()};
+
+$("addContactBtn").onclick=()=>openContact();
+function openContact(id=""){const c=find(state.contacts,id);$("editContactId").value=id;$("contactName").value=c?.name||"";$("contactPhone").value=c?.phone||"";$("contactGroup").value=c?.group||"شخصی";$("contactNote").value=c?.note||"";openDialog("contactDialog")}
+window.editContact=openContact;
+$("saveContactBtn").onclick=()=>{const id=$("editContactId").value,name=$("contactName").value.trim();if(!name)return alert("نام طرف‌حساب را وارد کنید.");const obj={id:id||uid(),name,phone:$("contactPhone").value.trim(),group:$("contactGroup").value,note:$("contactNote").value.trim()};if(id)state.contacts=state.contacts.map(x=>x.id===id?obj:x);else state.contacts.push(obj);$("contactDialog").close();save()};
+window.deleteContact=id=>{if(state.transactions.some(t=>t.contactId===id))return alert("این طرف‌حساب گردش دارد و حذف نمی‌شود.");if(confirm("طرف‌حساب حذف شود؟")){state.contacts=state.contacts.filter(x=>x.id!==id);save()}};
+window.showContactDetail=id=>{const c=find(state.contacts,id),b=contactBalance(id),list=state.transactions.filter(t=>t.contactId===id).sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id));$("contactDetailBody").innerHTML=`<div class="contact-detail-head"><span>${esc(c.group)}</span><h2>${esc(c.name)}</h2><small>${esc(c.phone||"بدون شماره")}</small><strong>${fmt(Math.abs(b))}</strong><small>${b>0?"بدهکار به من":b<0?"بستانکار از من":"تسویه"}</small></div><div class="row-actions" style="margin:12px 0"><button class="primary-small" onclick="contactQuickTx('${id}','receivable')">ثبت طلب</button><button class="primary-small" onclick="contactQuickTx('${id}','receive')">ثبت دریافت</button><button class="secondary-small" onclick="contactQuickTx('${id}','payable')">ثبت بدهی</button><button class="secondary-small" onclick="contactQuickTx('${id}','pay')">ثبت پرداخت</button></div><div class="stack-list">${list.map(txRow).join("")||empty("گردشی ثبت نشده است.")}</div>`;openDialog("contactDetailDialog")};
+window.contactQuickTx=(id,type)=>{$("contactDetailDialog").close();openTransaction();$("txType").value=type;updateTxCategories();$("txContact").value=id};
+
+$("addBudgetBtn").onclick=()=>openBudget();
+function openBudget(id=""){const b=find(state.budgets,id);$("editBudgetId").value=id;$("budgetCategory").value=b?.category||$("budgetCategory").value;$("budgetAmount").value=b?.amount||"";openDialog("budgetDialog")}
+window.editBudget=openBudget;
+$("saveBudgetBtn").onclick=()=>{const id=$("editBudgetId").value,category=$("budgetCategory").value,amount=n($("budgetAmount").value);if(amount<=0)return alert("مبلغ بودجه را وارد کنید.");state.budgets=state.budgets.filter(x=>x.id===id||x.category!==category);const obj={id:id||uid(),category,amount};if(id)state.budgets=state.budgets.map(x=>x.id===id?obj:x);else state.budgets.push(obj);$("budgetDialog").close();save()};
+window.deleteBudget=id=>{state.budgets=state.budgets.filter(x=>x.id!==id);save()};
+
+$("addInstallmentBtn").onclick=()=>openInstallment();
+function openInstallment(id=""){const i=find(state.installments,id);$("editInstallmentId").value=id;$("installmentTitle").value=i?.title||"";$("installmentAmount").value=i?.amount||"";$("installmentCount").value=i?.count||"";$("installmentPaid").value=i?.paid||0;$("installmentDue").value=i?.due||todayISO();$("installmentAccount").value=i?.accountId||state.accounts[0]?.id||"";openDialog("installmentDialog")}
+window.editInstallment=openInstallment;
+$("saveInstallmentBtn").onclick=()=>{const id=$("editInstallmentId").value,title=$("installmentTitle").value.trim(),amount=n($("installmentAmount").value),count=n($("installmentCount").value),paid=n($("installmentPaid").value);if(!title||amount<=0||count<=0)return alert("عنوان، مبلغ و تعداد اقساط را کامل کنید.");const obj={id:id||uid(),title,amount,count,paid,due:$("installmentDue").value,accountId:$("installmentAccount").value};if(id)state.installments=state.installments.map(x=>x.id===id?obj:x);else state.installments.push(obj);$("installmentDialog").close();save()};
+window.deleteInstallment=id=>{if(confirm("قسط حذف شود؟")){state.installments=state.installments.filter(x=>x.id!==id);save()}};
+window.payInstallment=id=>{const i=find(state.installments,id);if(i.paid>=i.count)return alert("همه اقساط پرداخت شده است.");state.transactions.push({id:uid(),type:"expense",amount:i.amount,title:"قسط "+i.title,accountId:i.accountId,toAccountId:"",category:"قبوض",contactId:"",date:todayISO(),note:"ثبت خودکار از بخش اقساط"});i.paid++;let d=new Date(i.due+"T12:00:00");d.setMonth(d.getMonth()+1);i.due=d.toISOString().slice(0,10);save()};
+
+$("addRecurringBtn").onclick=()=>openRecurring();$("recurringType").onchange=updateRecurringCategories;
+function openRecurring(id=""){const r=find(state.recurring,id);$("editRecurringId").value=id;$("recurringTitle").value=r?.title||"";$("recurringType").value=r?.type||"expense";updateRecurringCategories();$("recurringAmount").value=r?.amount||"";$("recurringAccount").value=r?.accountId||state.accounts[0]?.id||"";$("recurringCategory").value=r?.category||$("recurringCategory").value;$("recurringFrequency").value=r?.frequency||"monthly";$("recurringNext").value=r?.next||todayISO();openDialog("recurringDialog")}
+window.editRecurring=openRecurring;
+$("saveRecurringBtn").onclick=()=>{const id=$("editRecurringId").value,title=$("recurringTitle").value.trim(),amount=n($("recurringAmount").value);if(!title||amount<=0)return alert("عنوان و مبلغ را وارد کنید.");const obj={id:id||uid(),title,type:$("recurringType").value,amount,accountId:$("recurringAccount").value,category:$("recurringCategory").value,frequency:$("recurringFrequency").value,next:$("recurringNext").value};if(id)state.recurring=state.recurring.map(x=>x.id===id?obj:x);else state.recurring.push(obj);$("recurringDialog").close();save()};
+window.deleteRecurring=id=>{if(confirm("تراکنش دوره‌ای حذف شود؟")){state.recurring=state.recurring.filter(x=>x.id!==id);save()}};
+window.runRecurring=id=>{const r=find(state.recurring,id);state.transactions.push({id:uid(),type:r.type,amount:r.amount,title:r.title,accountId:r.accountId,toAccountId:"",category:r.category,contactId:"",date:todayISO(),note:"ثبت از تراکنش دوره‌ای"});let d=new Date(r.next+"T12:00:00");if(r.frequency==="weekly")d.setDate(d.getDate()+7);else if(r.frequency==="yearly")d.setFullYear(d.getFullYear()+1);else d.setMonth(d.getMonth()+1);r.next=d.toISOString().slice(0,10);save()};
+
+$("plansTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#plansTabs button").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".plan-panel").forEach(p=>p.classList.toggle("active",p.id==="plan-"+b.dataset.planTab))});
+["transactionSearch","transactionTypeFilter","transactionAccountFilter","transactionFrom","transactionTo"].forEach(id=>$(id).addEventListener("input",renderTransactions));
+["contactSearch","contactBalanceFilter"].forEach(id=>$(id).addEventListener("input",renderContacts));
+$("runReportBtn").onclick=renderReport;$("printReportBtn").onclick=()=>window.print();
+
+$("settingsBtn").onclick=()=>openDialog("settingsDialog");document.querySelectorAll("[data-go-from-dialog]").forEach(b=>b.onclick=()=>{$("settingsDialog").close();go(b.dataset.goFromDialog)});
+$("themeBtn").onclick=()=>{state.settings.dark=!state.settings.dark;save()};
+$("toggleAmountsBtn").onclick=()=>{state.settings.hideAmounts=!state.settings.hideAmounts;save()};
+$("categoryManagerBtn").onclick=()=>openDialog("categoriesDialog");
+$("addCategoryBtn").onclick=()=>{let type=$("newCategoryType").value,name=$("newCategoryName").value.trim();if(!name)return;if(!state.categories[type].includes(name))state.categories[type].push(name);$("newCategoryName").value="";save()};
+window.removeCategory=(type,name)=>{name=decodeURIComponent(name);if(confirm("دسته حذف شود؟")){state.categories[type]=state.categories[type].filter(x=>x!==name);save()}};
+
+function download(name,data,type){const a=document.createElement("a"),u=URL.createObjectURL(new Blob([data],{type}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)}
+$("backupBtn").onclick=()=>download("hesabyar-backup-"+todayISO()+".json",JSON.stringify(state,null,2),"application/json");
+$("restoreBtn").onclick=()=>$("restoreFile").click();
+$("restoreFile").onchange=async e=>{try{const x=JSON.parse(await e.target.files[0].text());if(!x.accounts||!x.transactions)throw 0;if(confirm("اطلاعات فعلی با فایل پشتیبان جایگزین شود؟")){state=x;save()}}catch{alert("فایل پشتیبان معتبر نیست.")}e.target.value=""};
+$("csvBtn").onclick=()=>{let rows=[["نوع","عنوان","مبلغ","حساب","حساب مقصد","دسته","طرف حساب","تاریخ","یادداشت"]];state.transactions.forEach(t=>rows.push([txTypeLabel(t.type),t.title,t.amount,find(state.accounts,t.accountId)?.name||"",find(state.accounts,t.toAccountId)?.name||"",t.category,find(state.contacts,t.contactId)?.name||"",t.date,t.note||""]));download("hesabyar-transactions.csv","\ufeff"+rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n"),"text/csv;charset=utf-8")};
+$("currencyBtn").onclick=()=>{const x=prompt("واحد پول را وارد کنید:",state.settings.currency);if(x){state.settings.currency=x.trim();save()}};
+$("pinBtn").onclick=()=>{if(state.settings.pin){if(confirm("رمز فعلی حذف شود؟")){state.settings.pin="";save()}}else{const p=prompt("یک رمز ۴ تا ۶ رقمی وارد کنید:");if(p&&/^\d{4,6}$/.test(p)){state.settings.pin=p;save();alert("رمز فعال شد.")}else if(p)alert("رمز باید ۴ تا ۶ رقم باشد.")}};
+$("sampleBtn").onclick=()=>{if(!confirm("داده‌های نمونه اضافه شود؟"))return;const a2={id:uid(),name:"کارت ملت",type:"کارت بانکی",opening:18000000,note:"حساب اصلی"};state.accounts.push(a2);const c1={id:uid(),name:"محمود رضایی",phone:"09120000000",group:"دوست",note:""};const c2={id:uid(),name:"فروشگاه پارس",phone:"",group:"فروشنده",note:""};state.contacts.push(c1,c2);const mk=monthKey();state.transactions.push({id:uid(),type:"income",amount:25000000,title:"حقوق ماهانه",accountId:a2.id,toAccountId:"",category:"حقوق",contactId:"",date:mk+"-02",note:""},{id:uid(),type:"expense",amount:3200000,title:"خرید منزل",accountId:a2.id,toAccountId:"",category:"خرید",contactId:"",date:mk+"-05",note:""},{id:uid(),type:"receivable",amount:6000000,title:"قرض به محمود",accountId:a2.id,toAccountId:"",category:"",contactId:c1.id,date:mk+"-08",note:""},{id:uid(),type:"payable",amount:4500000,title:"خرید نسیه",accountId:a2.id,toAccountId:"",category:"",contactId:c2.id,date:mk+"-10",note:""});state.budgets.push({id:uid(),category:"خوراک",amount:5000000},{id:uid(),category:"رفت‌وآمد",amount:2500000});state.installments.push({id:uid(),title:"وام بانک",amount:2200000,count:12,paid:3,due:todayISO(),accountId:a2.id});save()};
+$("clearBtn").onclick=()=>{if(confirm("همه اطلاعات برای همیشه پاک شود؟")){state=fresh();save()}};
+
+function checkLock(){if(state.settings.pin){$("lockScreen").classList.remove("hidden");$("pinInput").focus()}}
+$("unlockBtn").onclick=()=>{if($("pinInput").value===state.settings.pin){$("lockScreen").classList.add("hidden");$("pinError").textContent="";$("pinInput").value=""}else $("pinError").textContent="رمز نادرست است."};
+$("pinInput").addEventListener("keydown",e=>{if(e.key==="Enter")$("unlockBtn").click()});
+
+$("todayLabel").textContent=new Date().toLocaleDateString("fa-IR",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+$("reportFrom").value=new Date(new Date().getFullYear(),new Date().getMonth(),1).toISOString().slice(0,10);$("reportTo").value=todayISO();
+renderAll();checkLock();
+</script>
+</body>
+</html>
